@@ -1,6 +1,6 @@
 {
   "name": "timeright",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple, accurate timezone and daylight-saving desktop app.",
   "main": "main.js",
   "author": "TimeRight",
@@ -68,8 +68,12 @@
     "nsis": {
       "oneClick": false,
       "perMachine": false,
-      "allowToChangeInstallationDirectory": true
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "${productName}-Setup-${version}-win-x64.${ext}"
     },
-    "artifactName": "${productName}-${version}-${os}-${arch}.${ext}"
+    "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+    "portable": {
+      "artifactName": "${productName}-Portable-${version}-win-x64.${ext}"
+    }
   }
 }

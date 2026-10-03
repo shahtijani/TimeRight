@@ -13,7 +13,7 @@ Get the latest installers from **Releases**:
 
 | Platform | File |
 |---|---|
-| Windows | `TimeRight-<version>-win-x64.exe` (installer) or the portable `.exe` |
+| Windows | `TimeRight-Setup-<version>-win-x64.exe` (installer) or `TimeRight-Portable-<version>-win-x64.exe` (no install) |
 | macOS (Apple Silicon) | `TimeRight-<version>-mac-arm64.dmg` |
 | macOS (Intel) | `TimeRight-<version>-mac-x64.dmg` |
 
