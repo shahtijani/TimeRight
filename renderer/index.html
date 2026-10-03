@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TimeRight</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-icon">◷</div><span>TimeRight</span></div>
+      <nav>
+        <button class="nav active" data-view="home">⌂ <span>Home</span></button>
+        <button class="nav" data-view="world">◉ <span>World Clock</span></button>
+        <button class="nav" data-view="planner">▦ <span>Meeting Planner</span></button>
+        <button class="nav" data-view="converter">▣ <span>Time Converter</span></button>
+        <button class="nav" data-view="favorites">☆ <span>Favorites</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <button class="nav" data-view="settings">⚙ <span>Settings</span></button>
+        <button class="nav" data-view="about">ⓘ <span>About</span></button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="search-wrap">
+          <span>⌕</span>
+          <input id="search" placeholder="Search a country, city or time zone..." autocomplete="off" />
+        </div>
+        <div class="live">● Live</div>
+      </header>
+
+      <section id="searchResults" class="search-results hidden"></section>
+
+      <div id="viewHome">
+      <section class="hero-grid">
+        <article class="time-card yours">
+          <div class="eyebrow">YOUR TIME</div>
+          <div class="target-wrap picker" id="homePicker"></div>
+          <div id="localTime" class="big-time">--:--</div>
+          <div id="localDate" class="date">Loading…</div>
+          <div id="localZone" class="zone">—</div>
+          <span id="localDst" class="pill neutral">DST: —</span><div id="localNote" class="note"></div>
+        </article>
+
+        <div id="swap" class="swap">⇄</div>
+
+        <article class="time-card target">
+          <div class="eyebrow">TARGET LOCATION</div>
+          <div class="target-wrap picker" id="targetPicker"></div>
+          <div id="targetTime" class="big-time">--:--</div>
+          <div id="targetDate" class="date">Loading…</div>
+          <div id="targetZone" class="zone">—</div>
+          <span id="targetDst" class="pill on">DST: —</span><div id="targetNote" class="note"></div>
+        </article>
+      </section>
+
+      <div id="difference" class="difference">Calculating time difference…</div>
+
+      <section class="converter panel">
+        <div class="section-title"><span>▣</span><div><h2>Time Converter</h2><p>Convert a specific meeting time between locations.</p></div></div>
+        <div class="converter-grid">
+          <div>
+            <label>FROM</label>
+            <div class="picker field" id="fromPicker"></div>
+            <div class="input-row"><input id="fromDate" type="date"><input id="fromTime" type="time" value="10:00"></div>
+          </div>
+          <div class="arrow">→</div>
+          <div>
+            <label>TO</label>
+            <div class="picker field" id="toPicker"></div>
+            <div id="converted" class="converted">—</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title inline"><div><h2>World Clock</h2><p>Your saved locations</p></div><button id="viewAll" class="text-btn">View all</button></div>
+        <div id="worldClock" class="world-grid"></div>
+      </section>
+      </div>
+
+      <div id="viewPlanner" class="hidden">
+        <div class="panel planner-head">
+          <div class="section-title"><span>▦</span><div><h2>Meeting Planner</h2><p>Type it the way your client says it, or fill in the fields. DST is applied for the exact date.</p></div></div>
+          <input id="quick" class="quick" placeholder='Try: "3:50 PM Sydney tomorrow"   ·   "10am EST friday"   ·   "15:30 Australian time"' autocomplete="off" spellcheck="false">
+          <div id="quickNote" class="quick-note"></div>
+          <div class="planner-form">
+            <div><label>MEETING TIME IN</label><div class="picker field" id="pmPicker"></div></div>
+            <div><label>DATE</label><input id="pmDate" type="date"></div>
+            <div><label>TIME</label><input id="pmTime" type="time" value="10:00"></div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="section-title inline"><div><h2>Everyone's time</h2><p id="pmSub">Converted for each location, with DST status on that date</p></div><div class="pm-actions"><button id="pmCopy" class="text-btn">Copy summary</button></div></div>
+          <div id="pmWarn"></div>
+          <div id="pmRows"></div>
+          <div class="pm-add"><div class="picker field" id="pmAddPicker"></div></div>
+          <div class="legend"><i class="c-good"></i> 9 AM – 6 PM <i class="c-ok"></i> early / evening <i class="c-bad"></i> night</div>
+        </div>
+      </div>
+    </main>
+
+    <aside class="favorites panel-side">
+      <div class="fav-head"><h2>Favorites</h2><button id="manageFav" class="text-btn">Manage</button></div>
+      <div id="favoritesList"></div>
+      <button id="addFav" class="add-btn">＋ Add Location</button>
+    </aside>
+  </div>
+  <div id="modal" class="modal hidden"><div class="modal-card"><div class="modal-head"><h2 id="modalTitle">TimeRight</h2><button id="closeModal">×</button></div><div id="modalBody"></div></div></div>
+  <script src="zones.js"></script>
+  <script src="core.js"></script>
+  <script src="locations.js"></script>
+  <script src="planner.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
