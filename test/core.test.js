@@ -73,3 +73,8 @@ test('Real abbreviations instead of GMT+x', () => {
   assert.equal(C.zoneAbbr(d, 'America/New_York'), 'EDT');
   assert.equal(C.zoneAbbr(d, 'Europe/London'), 'BST');
 });
+test('Abbreviations are short codes, never long names', () => {
+  const d = new Date('2026-10-03T00:00:00Z');
+  for (const tz of ['Asia/Dubai', 'Asia/Kolkata', 'Pacific/Auckland', 'Australia/Sydney', 'Europe/London'])
+    assert.match(C.zoneAbbr(d, tz), /^([A-Z]{2,5}|GMT[+-]\d.*)$/, tz);
+});

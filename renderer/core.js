@@ -120,7 +120,7 @@
       const p = dtf(tz, { timeZoneName: 'short' }, 'abbr' + loc, loc).formatToParts(date).find(x => x.type === 'timeZoneName');
       const v = p ? p.value : '';
       if (!first) first = v;
-      if (v && !/^(GMT|UTC)/.test(v)) { found = v; break; }
+      if (/^[A-Z]{2,5}$/.test(v)) { found = v; break; } // short real abbreviations only (not "Gulf ST" or "GMT+4")
     }
     const out = found || first;
     abbrCache.set(key, out);

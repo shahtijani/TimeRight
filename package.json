@@ -1,7 +1,7 @@
 {
   "name": "timeright",
-  "version": "0.1.1",
-  "description": "A simple, accurate timezone and daylight-saving desktop app.",
+  "version": "0.1.2",
+  "description": "Accurate time zone and DST converter and meeting planner for Windows, macOS and the web.",
   "main": "main.js",
   "author": "TimeRight",
   "license": "MIT",
@@ -75,5 +75,10 @@
     "portable": {
       "artifactName": "${productName}-Portable-${version}-win-x64.${ext}"
     }
+  },
+  "homepage": "https://shahtijani.github.io/TimeRight/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shahtijani/TimeRight.git"
   }
 }

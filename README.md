@@ -1,12 +1,29 @@
 # TimeRight
 
-Accurate time zone and daylight-saving (DST) converter for Windows, macOS and the web. It never guesses DST: offsets come from the IANA time zone database, evaluated for the exact date you ask about.
+**Know the real time anywhere, with DST handled correctly.** TimeRight is a free time zone converter and meeting planner for Windows, macOS and the web.
 
-- Live time, UTC offset, DST on/off and the next DST change for any of 400+ zones
-- **Meeting Planner**: type "3:50 PM Sydney tomorrow" or "10am EST friday" and see everyone's local time, with DST status and working-hours strips
-- Warns about times that don't exist (clocks spring forward) or happen twice (clocks fall back)
-- Search by city, country, nearby city (Mumbai) or abbreviation (EST, IST, AEDT)
-- Works offline, no accounts, no ads, no tracking
+Many online converters show the wrong time because they don't know whether daylight saving time (DST) is on or off right now. TimeRight never guesses: offsets come from the IANA time zone database, evaluated for the exact date you ask about.
+
+**[Open the web version](https://shahtijani.github.io/TimeRight/)** · **[Download for Windows / Mac](https://github.com/shahtijani/TimeRight/releases/latest)**
+
+![TimeRight home screen](docs/screenshot-home.png)
+
+## What it does
+- **Live time and DST status** for 400+ zones: current time, UTC offset, "DST: ON / OFF / Not used", and when DST next starts or ends
+- **Meeting Planner**: type "3:50 PM Sydney tomorrow" or "10am EST friday" and see everyone's local time side by side, with a 24-hour strip showing working hours, evenings and night
+- **Time Converter**: convert any date and time between two places, using the DST rules in force on that date
+- **Warns about DST edge cases**: times that don't exist (clocks spring forward) and times that happen twice (clocks fall back)
+- **Smart search** by city, country, nearby city (Mumbai finds India) or abbreviation (EST, IST, AEDT)
+- **Favorites and world clock**, saved on your device
+- **Copy summary** of a meeting to paste into an email or chat
+- Works offline. No accounts, no ads, no tracking.
+
+![Meeting Planner](docs/screenshot-planner.png)
+
+## How to use
+1. **Check a time now:** open the app. The left card is your time, the right is the target place. Click either to search for a city or country. Press ⇄ to swap them.
+2. **Plan a meeting:** open *Meeting Planner*, type something like `3:50 PM Sydney 5 oct`, then use "＋ Add another location" for everyone attending. The blue outline marks the meeting hour in each person's day. Click *Copy summary* to share it.
+3. **Convert one time:** on *Home*, use the *Time Converter* card: pick From, To, a date and a time.
 
 ## Download
 Get the latest installers from **Releases**:
@@ -56,6 +73,18 @@ The `renderer/` folder is a plain static site (no build step). `.github/workflow
 - DST is derived from the runtime's IANA rules, never hardcoded. Dates are interpreted in the meeting's own zone.
 - Times that fall in a spring-forward gap are moved forward by the gap; repeated times let you choose which occurrence.
 - `EST`/`PST`/`IST`-style abbreviations in search are shortcuts for the zones that use them; ambiguous ones list several.
+
+## FAQ
+**Why does the same 3:50 PM give different results on different dates?** Because DST changes the offset. For example, Sydney is UTC+10 until 4 Oct 2026 and UTC+11 after, so 3:50 PM Sydney is 11:20 AM in India before that date and 10:20 AM after.
+
+**Does it need internet?** No. Time zone rules come from your device's built-in IANA database, so it works offline. Keep your OS updated, since governments occasionally change DST rules.
+
+**What does "EST" mean in search?** It's a shortcut for places that use that abbreviation, with New York first. Eastern Time in summer is technically EDT; the app shows the correct current one.
+
+**Why are the apps not signed?** Code signing certificates cost money. Until then, expect a one-time SmartScreen (Windows) or Gatekeeper (macOS) prompt; see Download above.
+
+## Contributing
+Issues and pull requests are welcome. Run `npm test` before submitting; the time logic is covered by tests in `test/`.
 
 ## License
 MIT. Flag artwork: MIT (flag-icons). Time zone data: IANA (public domain).
